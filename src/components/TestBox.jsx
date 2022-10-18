@@ -11,6 +11,8 @@ const TestBox = () => {
   const [showScore, setShowScore] = useState(false);
 
   //Game Controls
+  const [upperLimit, setUpperLimit] = useState("");
+  const [lowerLimit, setLowerLimit] = useState("");
   const [timeLimit, setTimeLimit] = useState(15);
   const [numLimit, setNumLimit] = useState(5);
 
@@ -27,14 +29,11 @@ const TestBox = () => {
   };
 
   const startQuiz = () => {
-    const lower = parseInt(lowerRangeRef.current.value);
-    const upper = parseInt(upperRangeRef.current.value) + 1;
-
     setTimeout(() => {
       gameOver();
     }, 1000 * timeLimit);
 
-    generateQuestions(lower, upper);
+    generateQuestions(lowerLimit, upperLimit + 1);
     toggleStartedQuiz();
     setBeforeQuiz(false);
   };
@@ -83,12 +82,32 @@ const TestBox = () => {
     setNumLimit(e.target.value);
   };
 
+  const lowerLimitInputHandler = (e) => {
+    setLowerLimit(e.target.value);
+  };
+
+  const upperLimitInputHandler = (e) => {
+    setUpperLimit(e.target.value);
+  };
+
   return (
     <div className="testBox questionsCont">
       {beforeQuiz && (
         <div>
-          Range: <input ref={lowerRangeRef} type="number" name="lowerRange" />{" "}
-          to <input ref={upperRangeRef} type="number" name="upperRange" />
+          Range:{" "}
+          <input
+            value={lowerLimit}
+            onChange={lowerLimitInputHandler}
+            type="number"
+            name="lowerRange"
+          />{" "}
+          to{" "}
+          <input
+            value={upperLimit}
+            onChange={upperLimitInputHandler}
+            type="number"
+            name="upperRange"
+          />
           <br />
           Time Limit (s):{" "}
           <input
