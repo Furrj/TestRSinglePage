@@ -33,8 +33,13 @@ body {
 }
 
 #timer {
+  background-color: red;
+  color: white;
   width: 200px;
   height: 100px;
   border: 1px solid black;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

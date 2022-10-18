@@ -5,31 +5,34 @@ import Timer from "../components/Timer";
 import ScoreBoard from "./ScoreBoard";
 
 const TestBox = () => {
+  //Views
   const [beforeQuiz, setBeforeQuiz] = useState(true);
   const [startedQuiz, setStartedQuiz] = useState(false);
   const [showScore, setShowScore] = useState(false);
+
+  //Game Controls
+  const [timeLimit, setTimeLimit] = useState(15);
+  const [numLimit, setNumLimit] = useState(5);
+
+  //Game Data
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [results, setResults] = useState([]);
-  const [timeLimit, setTimeLimit] = useState(0);
 
   const lowerRangeRef = useRef();
   const upperRangeRef = useRef();
-  const timeLimitRef = useRef();
 
   const toggleStartedQuiz = () => {
     setStartedQuiz(startedQuiz ? false : true);
   };
 
   const startQuiz = () => {
-    setTimeLimit(parseInt(timeLimitRef.current.value));
-
     const lower = parseInt(lowerRangeRef.current.value);
     const upper = parseInt(upperRangeRef.current.value) + 1;
 
     setTimeout(() => {
       gameOver();
-    }, 1000 * parseInt(timeLimitRef.current.value));
+    }, 1000 * timeLimit);
 
     generateQuestions(lower, upper);
     toggleStartedQuiz();
@@ -39,7 +42,7 @@ const TestBox = () => {
   const generateQuestions = (min, max) => {
     const questionList = [];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < numLimit; i++) {
       const param1 = Math.floor(Math.random() * (max - min)) + min;
       const param2 = Math.floor(Math.random() * (max - min)) + min;
 
@@ -71,17 +74,41 @@ const TestBox = () => {
     setResults((results) => [...results, question]);
   };
 
+  //Input Handlers
+  const timeLimitInputHandler = (e) => {
+    setTimeLimit(e.target.value);
+  };
+
+  const numLimitInputHandler = (e) => {
+    setNumLimit(e.target.value);
+  };
+
   return (
     <div className="testBox questionsCont">
       {beforeQuiz && (
         <div>
-          Select Range:{" "}
-          <input ref={lowerRangeRef} type="number" name="lowerRange" /> to{" "}
-          <input ref={upperRangeRef} type="number" name="upperRange" />
+          Range: <input ref={lowerRangeRef} type="number" name="lowerRange" />{" "}
+          to <input ref={upperRangeRef} type="number" name="upperRange" />
           <br />
-          Select Time Limit (s):{" "}
-          <input ref={timeLimitRef} type="number" name="timeLimit" id="" />
-          <button onClick={startQuiz} className="mt-3">
+          Time Limit (s):{" "}
+          <input
+            onChange={timeLimitInputHandler}
+            value={timeLimit}
+            type="number"
+            name="timeLimit"
+            className="mt-3"
+          />
+          <br />
+          Number Of Questions:{" "}
+          <input
+            onChange={numLimitInputHandler}
+            value={numLimit}
+            type="number"
+            name="numLimit"
+            className="mt-3"
+          />
+          <br />
+          <button onClick={startQuiz} className="mt-3 btn btn-success">
             Start
           </button>
         </div>
