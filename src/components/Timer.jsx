@@ -1,4 +1,3 @@
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import { useState, useEffect } from "react";
 
 const Timer = (props) => {
@@ -7,7 +6,7 @@ const Timer = (props) => {
   useEffect(() => {
     const timer = setInterval(() => {
       if (timeLeft > 0) {
-        setTimeLeft(timeLeft => timeLeft - 1);
+        setTimeLeft((timeLeft) => timeLeft - 1);
       } else {
         clearInterval(timer);
       }
