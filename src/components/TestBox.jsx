@@ -5,13 +5,18 @@ import Timer from "../components/Timer";
 import ScoreBoard from "./ScoreBoard";
 
 const TestBox = () => {
+  //Views
   const [beforeQuiz, setBeforeQuiz] = useState(true);
   const [startedQuiz, setStartedQuiz] = useState(false);
   const [showScore, setShowScore] = useState(false);
+
+  //Game Controls
+  const [timeLimit, setTimeLimit] = useState(5);
+
+  //Game Data
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [results, setResults] = useState([]);
-  const [timeLimit, setTimeLimit] = useState(5);
 
   const lowerRangeRef = useRef();
   const upperRangeRef = useRef();

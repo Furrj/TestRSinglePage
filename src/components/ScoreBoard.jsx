@@ -1,6 +1,12 @@
 const ScoreBoard = (props) => {
   const content = [];
 
+  const finalScore = parseInt((props.score / props.results.length) * 100);
+
+  if (!finalScore) {
+    finalScore = 0;
+  }
+
   for (let r of props.results) {
     if (r.correct === false) {
       content.push({
@@ -17,7 +23,7 @@ const ScoreBoard = (props) => {
       <div className="card finalCard">
         <div className="card-body">
           <div className="card-text">
-            Final Score: {parseInt((props.score / props.results.length) * 100)}%
+            Final Score: {}%
             <br />
           </div>
         </div>
