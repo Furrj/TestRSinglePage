@@ -1,0 +1,40 @@
+body {
+  text-align: center;
+}
+
+.question {
+  width: 30%;
+}
+
+.questionsCont {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.resultsCard {
+  width: 30%;
+  margin: 15px;
+}
+
+.finalCard {
+  width: 100%;
+  background-color: aqua;
+  align-self: stretch;
+}
+
+#resultsCont {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  flex-direction: row;
+  align-items: center;
+}
+
+#timer {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
