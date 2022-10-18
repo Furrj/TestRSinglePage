@@ -11,7 +11,8 @@ const TestBox = () => {
   const [showScore, setShowScore] = useState(false);
 
   //Game Controls
-  const [timeLimit, setTimeLimit] = useState(5);
+  const [timeLimit, setTimeLimit] = useState(15);
+  const [numLimit, setNumLimit] = useState(5);
 
   //Game Data
   const [questions, setQuestions] = useState([]);
@@ -41,7 +42,7 @@ const TestBox = () => {
   const generateQuestions = (min, max) => {
     const questionList = [];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < numLimit; i++) {
       const param1 = Math.floor(Math.random() * (max - min)) + min;
       const param2 = Math.floor(Math.random() * (max - min)) + min;
 
@@ -78,23 +79,36 @@ const TestBox = () => {
     setTimeLimit(e.target.value);
   };
 
+  const numLimitInputHandler = (e) => {
+    setNumLimit(e.target.value);
+  };
+
   return (
     <div className="testBox questionsCont">
       {beforeQuiz && (
         <div>
-          Select Range:{" "}
-          <input ref={lowerRangeRef} type="number" name="lowerRange" /> to{" "}
-          <input ref={upperRangeRef} type="number" name="upperRange" />
+          Range: <input ref={lowerRangeRef} type="number" name="lowerRange" />{" "}
+          to <input ref={upperRangeRef} type="number" name="upperRange" />
           <br />
-          Select Time Limit (s):{" "}
+          Time Limit (s):{" "}
           <input
             onChange={timeLimitInputHandler}
             value={timeLimit}
             type="number"
             name="timeLimit"
-            id=""
+            className="mt-3"
           />
-          <button onClick={startQuiz} className="mt-3">
+          <br />
+          Number Of Questions:{" "}
+          <input
+            onChange={numLimitInputHandler}
+            value={numLimit}
+            type="number"
+            name="numLimit"
+            className="mt-3"
+          />
+          <br />
+          <button onClick={startQuiz} className="mt-3 btn btn-success">
             Start
           </button>
         </div>
