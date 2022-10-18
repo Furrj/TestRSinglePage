@@ -1,23 +1,31 @@
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 
 const Question = (props) => {
-  const answerRef = useRef();
+  const [answer, setAnswer] = useState("");
 
-  const submit = (e) => {
-    e.preventDefault();
+  const answerHandler = (e) => {
+    setAnswer(parseInt(e.target.value));
+  };
 
-    if (props.question.correctAnswer === parseInt(answerRef.current.value)) {
+  const submit = () => {
+    if (props.question.correctAnswer === answer) {
       props.addToScore();
-      props.question.guessed = parseInt(answerRef.current.value);
+      props.question.guessed = answer;
       props.question.correct = true;
       props.addToResults(props.question);
     } else {
-      props.question.guessed = parseInt(answerRef.current.value);
+      props.question.guessed = answer;
       props.question.correct = false;
       props.addToResults(props.question);
     }
 
     props.submit();
+  };
+
+  const keyDownHandler = (e) => {
+    if (e.code === "Enter") {
+      submit();
+    } else return;
   };
 
   return (
@@ -30,7 +38,14 @@ const Question = (props) => {
         <div className="card-text">
           <label htmlFor="answer">Answer</label>
           <br />
-          <input ref={answerRef} type="number" name="answer" />
+          <input
+            autoFocus
+            onChange={answerHandler}
+            value={answer}
+            type="number"
+            name="answer"
+            onKeyDown={keyDownHandler}
+          />
           <br />
           <button className="mt-2" onClick={submit}>
             Submit
