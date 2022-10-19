@@ -73,19 +73,43 @@ const TestBox = () => {
 
   //Input Handlers
   const timeLimitInputHandler = (e) => {
-    setTimeLimit(parseInt(e.target.value));
+    const newValue = parseInt(e.target.value);
+
+    if (isNaN(newValue)) {
+      setTimeLimit("");
+    } else {
+      setTimeLimit(newValue);
+    }
   };
 
   const numLimitInputHandler = (e) => {
-    setNumLimit(parseInt(e.target.value));
+    const newValue = parseInt(e.target.value);
+
+    if (isNaN(newValue)) {
+      setNumLimit("");
+    } else {
+      setNumLimit(newValue);
+    }
   };
 
   const lowerLimitInputHandler = (e) => {
-    setLowerLimit(parseInt(e.target.value));
+    const newValue = parseInt(e.target.value);
+
+    if (isNaN(newValue)) {
+      setLowerLimit("");
+    } else {
+      setLowerLimit(newValue);
+    }
   };
 
   const upperLimitInputHandler = (e) => {
-    setUpperLimit(parseInt(e.target.value));
+    const newValue = parseInt(e.target.value);
+
+    if (isNaN(newValue)) {
+      setUpperLimit("");
+    } else {
+      setUpperLimit(newValue);
+    }
   };
 
   return (
