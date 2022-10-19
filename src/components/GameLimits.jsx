@@ -1,13 +1,25 @@
 const GameLimits = (props) => {
   return (
     <div>
-      Range: <input ref={lowerRangeRef} type="number" name="lowerRange" /> to{" "}
-      <input ref={upperRangeRef} type="number" name="upperRange" />
+      Range:{" "}
+      <input
+        value={props.lowerLimit}
+        onChange={props.lowerLimitInputHandler}
+        type="number"
+        name="lowerRange"
+      />{" "}
+      to{" "}
+      <input
+        value={props.upperLimit}
+        onChange={props.upperLimitInputHandler}
+        type="number"
+        name="upperRange"
+      />
       <br />
       Time Limit (s):{" "}
       <input
-        onChange={timeLimitInputHandler}
-        value={timeLimit}
+        onChange={props.timeLimitInputHandler}
+        value={props.timeLimit}
         type="number"
         name="timeLimit"
         className="mt-3"
@@ -15,8 +27,8 @@ const GameLimits = (props) => {
       <br />
       Number Of Questions:{" "}
       <input
-        onChange={numLimitInputHandler}
-        value={numLimit}
+        onChange={props.numLimitInputHandler}
+        value={props.numLimit}
         type="number"
         name="numLimit"
         className="mt-3"

@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import Questions from "../components/Questions";
 import Timer from "../components/Timer";
 import ScoreBoard from "./ScoreBoard";
+import GameLimits from "./GameLimits";
 
 const TestBox = () => {
   //Views
@@ -93,44 +94,16 @@ const TestBox = () => {
   return (
     <div className="testBox questionsCont">
       {beforeQuiz && (
-        <div>
-          Range:{" "}
-          <input
-            value={lowerLimit}
-            onChange={lowerLimitInputHandler}
-            type="number"
-            name="lowerRange"
-          />{" "}
-          to{" "}
-          <input
-            value={upperLimit}
-            onChange={upperLimitInputHandler}
-            type="number"
-            name="upperRange"
-          />
-          <br />
-          Time Limit (s):{" "}
-          <input
-            onChange={timeLimitInputHandler}
-            value={timeLimit}
-            type="number"
-            name="timeLimit"
-            className="mt-3"
-          />
-          <br />
-          Number Of Questions:{" "}
-          <input
-            onChange={numLimitInputHandler}
-            value={numLimit}
-            type="number"
-            name="numLimit"
-            className="mt-3"
-          />
-          <br />
-          <button onClick={startQuiz} className="mt-3 btn btn-success">
-            Start
-          </button>
-        </div>
+        <GameLimits
+          upperLimit={upperLimit}
+          lowerLimit={lowerLimit}
+          timeLimit={timeLimit}
+          numLimit={numLimit}
+          upperLimitInputHandler={upperLimitInputHandler}
+          lowerLimitInputHandler={lowerLimitInputHandler}
+          timeLimitInputHandler={timeLimitInputHandler}
+          numLimitInputHandler={numLimitInputHandler}
+        />
       )}
 
       {startedQuiz && <Timer timeLimit={timeLimit} />}
