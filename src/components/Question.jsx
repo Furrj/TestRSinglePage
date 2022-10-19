@@ -31,9 +31,10 @@ const Question = (props) => {
   return (
     <div className="card question m-3">
       <div className="card-body">
-        <div className="card-text">
-          {props.question.param1} X {props.question.param2}
-        </div>
+        <h4 className="card-title">
+          {props.question.param1} {props.question.operation}{" "}
+          {props.question.param2}
+        </h4>
         <hr />
         <div className="card-text">
           <label htmlFor="answer">Answer</label>

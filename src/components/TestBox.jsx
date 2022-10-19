@@ -17,10 +17,12 @@ const TestBox = () => {
   const [timeLimit, setTimeLimit] = useState(15);
   const [numLimit, setNumLimit] = useState(5);
 
-  //Game Data
+  //Game Object Data
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [results, setResults] = useState([]);
+  const [operation, setOperation] = useState("+");
+  const [name, setName] = useState("");
 
   const toggleStartedQuiz = () => {
     setStartedQuiz(startedQuiz ? false : true);
@@ -43,13 +45,33 @@ const TestBox = () => {
       const param1 = Math.floor(Math.random() * (max - min)) + min;
       const param2 = Math.floor(Math.random() * (max - min)) + min;
 
+      let correctAnswer = 0;
+
+      switch (operation) {
+        case "+":
+          correctAnswer = param1 + param2;
+          break;
+        case "-":
+          correctAnswer = param1 - param2;
+          break;
+        case "x":
+          correctAnswer = param1 * param2;
+          break;
+        case "/":
+          correctAnswer = param1 / param2;
+          break;
+        default:
+          return;
+      }
+
       const question = {
         id: i,
         param1,
         param2,
-        correctAnswer: param1 * param2,
+        correctAnswer,
         guessed: 0,
         correct: false,
+        operation,
       };
 
       questionList.push(question);
@@ -112,6 +134,14 @@ const TestBox = () => {
     }
   };
 
+  const operationUpdateHandler = (e) => {
+    setOperation(e.target.value);
+  };
+
+  const nameInputHandler = (e) => {
+    setName(e.target.value);
+  };
+
   return (
     <div className="testBox questionsCont">
       {beforeQuiz && (
@@ -125,6 +155,8 @@ const TestBox = () => {
           timeLimitInputHandler={timeLimitInputHandler}
           numLimitInputHandler={numLimitInputHandler}
           startQuiz={startQuiz}
+          setOperation={operationUpdateHandler}
+          setName={nameInputHandler}
         />
       )}
 
@@ -139,7 +171,7 @@ const TestBox = () => {
         />
       )}
 
-      {showScore && <ScoreBoard results={results} score={score} />}
+      {showScore && <ScoreBoard name={name} results={results} score={score} />}
     </div>
   );
 };

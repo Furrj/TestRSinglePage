@@ -22,7 +22,10 @@ const ScoreBoard = (props) => {
   return (
     <div id="resultsCont">
       <div className="card finalCard">
-        <div className="card-body">
+        <div className="card-title" id="resultName">
+          <h3>{props.name}</h3>
+        </div>
+        <div className="card-body" id="resultBody">
           <div className="card-text">
             Final Score: {finalScore}%
             <br />
@@ -41,13 +44,9 @@ const ScoreBoard = (props) => {
           >
             <div className="card-body">
               <h5 className="card-title">
-                Question {el.id + 1}
+                {el.param1} {el.operation} {el.param2}
                 <hr />
               </h5>
-              <div className="card-text">
-                {el.param1} X {el.param2}
-                <br />
-              </div>
               <div className="card-text">
                 You Said: {el.guessed}
                 <br />
