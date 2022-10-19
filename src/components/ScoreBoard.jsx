@@ -16,8 +16,6 @@ const ScoreBoard = (props) => {
     }
   }
 
-  console.log(content);
-
   return (
     <div id="resultsCont">
       <div className="card finalCard">
