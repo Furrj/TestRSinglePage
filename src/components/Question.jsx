@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Question = (props) => {
   const [answer, setAnswer] = useState("");

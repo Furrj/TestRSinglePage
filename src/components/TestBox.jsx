@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import Questions from "../components/Questions";
 import Timer from "../components/Timer";
@@ -21,9 +21,6 @@ const TestBox = () => {
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
   const [results, setResults] = useState([]);
-
-  const lowerRangeRef = useRef();
-  const upperRangeRef = useRef();
 
   const toggleStartedQuiz = () => {
     setStartedQuiz(startedQuiz ? false : true);
@@ -76,19 +73,19 @@ const TestBox = () => {
 
   //Input Handlers
   const timeLimitInputHandler = (e) => {
-    setTimeLimit(e.target.value);
+    setTimeLimit(parseInt(e.target.value));
   };
 
   const numLimitInputHandler = (e) => {
-    setNumLimit(e.target.value);
+    setNumLimit(parseInt(e.target.value));
   };
 
   const lowerLimitInputHandler = (e) => {
-    setLowerLimit(e.target.value);
+    setLowerLimit(parseInt(e.target.value));
   };
 
   const upperLimitInputHandler = (e) => {
-    setUpperLimit(e.target.value);
+    setUpperLimit(parseInt(e.target.value));
   };
 
   return (
@@ -103,6 +100,7 @@ const TestBox = () => {
           lowerLimitInputHandler={lowerLimitInputHandler}
           timeLimitInputHandler={timeLimitInputHandler}
           numLimitInputHandler={numLimitInputHandler}
+          startQuiz={startQuiz}
         />
       )}
 
