@@ -2,6 +2,36 @@ body {
   text-align: center;
 }
 
+/* RANGE */
+#gameLimitCard {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: azure;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.col-4 {
+  border: 1px solid black;
+}
+
+#rangeSpacerTop {
+  height: 10vh;
+}
+
+#rangeSpacerBot {
+  height: 10vh;
+}
+
+.gameLimitsForm {
+  width: 40px;
+}
+
+/* QUESTIONS */
 .question {
   width: 30%;
 }
@@ -13,15 +43,10 @@ body {
   align-items: center;
 }
 
+/* RESULTS */
 .resultsCard {
   width: 40%;
   margin: 15px;
-}
-
-.finalCard {
-  width: 100%;
-  background-color: aqua;
-  align-self: stretch;
 }
 
 #resultsCont {
@@ -32,6 +57,13 @@ body {
   align-items: center;
 }
 
+.finalCard {
+  width: 100%;
+  background-color: aqua;
+  align-self: stretch;
+}
+
+/* UI */
 #timer {
   background-color: red;
   color: white;
@@ -44,30 +76,8 @@ body {
   justify-content: center;
 }
 
-#gameLimitCard {
-  width: 50%;
-  border: 1px solid black;
-  border-radius: 15px;
-  background-color: azure;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#rangeSpacerTop {
-  height: 10vh;
-}
-
-#rangeSpacerBot {
-  height: 10vh;
-}
-
-.gameLimitsForm {
-  width: 50%;
-}
-
-@media only screen and (max-width: 480px) { 
+/* MOBILE */
+@media only screen and (max-width: 480px) {
   #resultsCont {
     width: 80%;
   }
