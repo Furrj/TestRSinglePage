@@ -45,6 +45,7 @@ const Question = (props) => {
             type="number"
             name="answer"
             onKeyDown={keyDownHandler}
+            className="form-control"
           />
           <br />
           <button className="mt-2" onClick={submit}>

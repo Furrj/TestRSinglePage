@@ -19,27 +19,25 @@ const GameLimits = (props) => {
           onChange={props.upperLimitInputHandler}
           type="number"
           name="upperRange"
-          className="form-control text-center gameLimitsForm"
+          className="form-control text-center gameLimitsForm mb-3"
           required
         />
-        <br />
         Time Limit (s):{" "}
         <input
           onChange={props.timeLimitInputHandler}
           value={props.timeLimit}
           type="number"
           name="timeLimit"
-          className="mt-3 form-control text-center gameLimitsForm"
+          className="form-control text-center gameLimitsForm mb-3"
           required
         />
-        <br />
         Number Of Questions:{" "}
         <input
           onChange={props.numLimitInputHandler}
           value={props.numLimit}
           type="number"
           name="numLimit"
-          className="mt-3 form-control text-center gameLimitsForm"
+          className="form-control text-center gameLimitsForm"
           required
         />
         <br />
