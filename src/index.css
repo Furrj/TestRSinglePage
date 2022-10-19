@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  background-color: hsla(180, 100%, 75%, 0.3);
 }
 
 /* RANGE */
@@ -45,7 +46,7 @@ body {
 
 /* RESULTS */
 .resultsCard {
-  width: 40%;
+  width: 30%;
   margin: 15px;
 }
 
@@ -59,8 +60,16 @@ body {
 
 .finalCard {
   width: 100%;
-  background-color: aqua;
+  background-color: hsla(200, 75%, 75%, 0.5);;
   align-self: stretch;
+}
+
+.correct {
+  background-color: hsla(120, 100%, 75%, 0.5);
+}
+
+.wrong {
+  background-color: hsla(360, 100%, 75%, 0.5);
 }
 
 /* UI */
