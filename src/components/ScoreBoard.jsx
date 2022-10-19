@@ -34,7 +34,7 @@ const ScoreBoard = (props) => {
           <div key={el.id} className="card resultsCard">
             <div className="card-body">
               <div className="card-text">
-                Problem: {el.question}
+                {el.question}
                 <br />
               </div>
               <div className="card-text">

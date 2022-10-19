@@ -9,7 +9,9 @@ function App() {
   return (
     <div>
       <Navbar />
+      <div id="rangeSpacerTop"></div>
       <QuizPage />
+      <div id="rangeSpacerBot"></div>
       <Footer />
     </div>
   );
