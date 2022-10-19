@@ -54,7 +54,7 @@ const GameLimits = (props) => {
           Operation:{" "}
           <select name="operation" onChange={props.setOperation}>
             <option value="+">+</option>
-            <option value="&mdash;">&mdash;</option>
+            <option value="-">-</option>
             <option value="x">x</option>
             <option value="/">/</option>
           </select>
